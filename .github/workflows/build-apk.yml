@@ -22,14 +22,13 @@ jobs:
 
       - name: إعداد Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10.2"
 
-      - name: السماح بتشغيل Gradle
-        run: chmod +x gradlew
+      - name: بناء التطبيق
+        run: gradle assembleDebug
 
-      - name: بناء APK
-        run: ./gradlew assembleDebug
-
-      - name: رفع APK
+      - name: رفع ملف APK
         uses: actions/upload-artifact@v4
         with:
           name: Maqadi-APK
